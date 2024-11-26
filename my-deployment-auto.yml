@@ -21,6 +21,13 @@ spec:
             cpu: "200m"
         ports:
         - containerPort: 80
+        volumeMounts:
+          - mountPath: /data
+            name: data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: mypvc
   strategy:
     type: RollingUpdate
     rollingUpdate:
