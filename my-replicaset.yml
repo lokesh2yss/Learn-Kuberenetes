@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: my-replicaset
+  labels:
+    key: value
+spec:
+  replicas: 3
+  selector: 
+    matchLabels: 
+     key: value
+  template:
+    metadata:
+      name: my-rs-pod
+      labels:
+        key: value
+    spec: 
+      containers: 
+        - name: my-rs-container
+          image: nginx
+          resources:
+            limits:
+              memory: "400Mi"
+              cpu: "300m"
+            requests:
+              memory: "200Mi"
+              cpu: "200m"
+          ports:
+            - containerPort: 80 
+
+    
+
+
